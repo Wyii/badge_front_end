@@ -1,0 +1,20 @@
+<ion-view>
+    <ion-content>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search">
+            </label>
+        </div>
+        <div class="list">
+            <div ng-repeat="member in memberList">
+                <a class="item item-avatar" href="#/all/{{member.id}}">
+                    <img src="member.avatar">
+                    <h2>{{member.name}}</h2>
+                    <img src="img/badge.png"> x {{member.count}}
+                </a>
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
