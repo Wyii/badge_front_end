@@ -1,4 +1,6 @@
-<ion-view>
+<ion-view view-title="Home" hide-back-button="true">
+
+
     <ion-content>
         <div class="list list-inset">
             <label class="item item-input">
@@ -8,7 +10,7 @@
         </div>
         <div class="list">
             <div ng-repeat="member in memberList">
-                <a class="item item-avatar" href="#/all/{{member.id}}">
+                <a class="item item-avatar" ui-sref="badge.members.detail({id: member.id})">
                     <img ng-src="{{member.avatar}}">
                     <h2>{{member.name}}</h2>
                     <img src="images/badge.png"> x {{member.count}}

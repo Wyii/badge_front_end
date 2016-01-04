@@ -1,11 +1,11 @@
-<ion-view view-title="{{member.name}}">
-    <ion-content class="padding row">
+<ion-view view-title="Badge Wall">
+    <ion-content class="padding">
         <div class="innerBlock fontsize12">
             <img ng-src="{{toUser.avatar}}" class="headImg" style="width: 60px; height: 60px">
             <div class="innerBlock">
                 <div>
                     {{toUser.name}}
-                    <a class="button button-small button-clear button-positive" href="#/all/details/badgeForm/{{toUser.id}}">
+                    <a class="button button-small button-clear button-positive" ui-sref="badge.me({id: toUser.id})">
                         Badge
                     </a>
                 </div>
@@ -23,5 +23,7 @@
 
             </div>
         </div>
+
+        <button class="button" ui-sref="badge.members">aaaaa</button>
     </ion-content>
 </ion-view>

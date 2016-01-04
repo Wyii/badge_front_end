@@ -37,23 +37,41 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
-            .state('all', {
-                url: '^/all',
-                templateUrl: 'views/all.html',
-                controller: "MemberCtrl"
-            })
-
-            .state('details', {
-                url: '^/all/:id',
-                templateUrl: 'views/details.html',
-                controller: 'MemberDetailsCtrl'
-            })
-
             .state('badge', {
-                url: '^/all/details/badgeForm/:id',
-                templateUrl: 'views/badgeForm.html',
-                controller: 'BadgeCtrl'
+                url: '^/badge',
+                abstract: true
+            })
+
+            .state('badge.members', {
+                url: '^/badge/members',
+                views: {
+                    'main@':{
+                        templateUrl: 'views/badge-members.html',
+                        controller: "MemberCtrl"
+                    }
+                }
+            })
+
+            .state('badge.members.detail', {
+                url: '^/badge/members/:id',
+                views: {
+                    'main@':{
+                        templateUrl: 'views/badge-members.detail.html',
+                        controller: "MemberDetailsCtrl"
+                    }
+                }
+            })
+
+
+            .state('badge.me', {
+                url: '^/badge/me/:id',
+                views: {
+                    'main@':{
+                        templateUrl: 'views/badge-me.html',
+                        controller: 'BadgeCtrl'
+                    }
+                }
             });
 
-            $urlRouterProvider.otherwise('/all');
+            $urlRouterProvider.otherwise('/badge/members');
     }]);
