@@ -23,6 +23,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     //  });
     //})
 
+    .constant('app', {
+        version: 'v1.0.0'
+    })
+
     .config(['$httpProvider', function ($httpProvider) {
         if (!$httpProvider.defaults.headers.get) {
             $httpProvider.defaults.headers.get = {};
@@ -47,7 +51,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 views: {
                     'main@':{
                         templateUrl: 'views/badge-members.html',
-                        controller: "MemberCtrl"
+                        controller: "MemberCtrl as MC"
                     }
                 }
             })
@@ -57,7 +61,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 views: {
                     'main@':{
                         templateUrl: 'views/badge-members.detail.html',
-                        controller: "MemberDetailsCtrl"
+                        controller: "MemberDetailCtrl as MDC"
                     }
                 }
             })
@@ -68,10 +72,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 views: {
                     'main@':{
                         templateUrl: 'views/badge-me.html',
-                        controller: 'BadgeCtrl'
+                        controller: 'BadgeMeCtrl as BMC'
                     }
                 }
             });
 
             $urlRouterProvider.otherwise('/badge/members');
+    }])
+
+    .run(['$injector', 'app', function($injector, app){
+        app.$injector = $injector;
+        app.$http = $injector.get('$http');
+        app.$rootScope = $injector.get('$rootScope');
+        app.$location = $injector.get('$location');
+        app.$state = $injector.get('$state');
+        app.$stateParams = $injector.get('$stateParams');
+
     }]);
+

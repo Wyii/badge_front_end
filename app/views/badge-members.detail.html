@@ -1,29 +1,26 @@
-<ion-view view-title="Badge Wall">
+<ion-view view-title="Badge Wall" class="badge-wall-page">
     <ion-content class="padding">
-        <div class="innerBlock fontsize12">
-            <img ng-src="{{toUser.avatar}}" class="headImg" style="width: 60px; height: 60px">
+        <div class="avatar">
+            <img ng-src="{{MDC.toUser.avatar}}" class="headImg">
             <div class="innerBlock">
                 <div>
-                    {{toUser.name}}
-                    <a class="button button-small button-clear button-positive" ui-sref="badge.me({id: toUser.id})">
+                    {{MDC.toUser.name}}
+                    <a class="button button-small button-clear button-positive" ui-sref="badge.me({id: MDC.toUser.id})">
                         Badge
                     </a>
                 </div>
-                <p>{{toUser.email}}</p>
+                <div class="f12px">{{MDC.toUser.email}}</div>
             </div>
         </div>
 
         <div class="list">
-            <div ng-repeat="record in recordList">
+            <div ng-repeat="record in MDC.recordList">
                 <a class="item item-avatar" href="">
                     <img src="images/badge.png">
                     <h2>{{record.fromUser}}</h2><h6>{{record.dateCreated}}</h6>
                     <p>{{record.comment}}</p>
                 </a>
-
             </div>
         </div>
-
-        <button class="button" ui-sref="badge.members">aaaaa</button>
     </ion-content>
 </ion-view>

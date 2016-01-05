@@ -1,46 +1,61 @@
-angular.module('starter.controllers',[])
+angular.module('starter.controllers', [])
 
-.controller('MemberCtrl',function($scope,$http){
-    $http({
-        url:"/api/"
-    }).success(function(data){
-        $scope.memberList = data;
-    });
-})
+    // 首页
+    // 用户列表（按徽章数倒序显示)
+    .controller('MemberCtrl', ['app', function (app) {
+        var vm = this;
 
-.controller('MemberDetailsCtrl',function($scope,$stateParams,$http){
-    $http({
-        url:"/api/user/" + $stateParams.id
-    }).success(function(data){
-        $scope.recordList = data.recordList;
-        $scope.toUser = data.toUser
-    });
-})
-
-.controller('BadgeCtrl',function($scope,$stateParams,$http){
-    $http({
-        url:"/api/badge/all"
-    }).success(function(data){
-        $scope.badgeList = data;
-    });
-    $scope.toUser = $stateParams.id;
-    $scope.fromUser = 5
-})
-
-.controller('BadgeFormCtrl',function($scope,$http,$state){
-    $scope.badge = {
-        id:''
-    };
-
-    $scope.submit = function() {
-        $http({
-            method:"POST",
-            url:"/api/record/add",
-            params:{badge:$scope.badge.id,comment:$scope.comment,toUser:$scope.toUser,fromUser:$scope.fromUser}
-        }).success(function(data){
-           window.location.href = "/all/"+$scope.toUser;
-            //$state.go('all',{id:$scope.toUser});
+        app.$http({
+            url: "/api/"
+        }).success(function (data) {
+            vm.memberList = data;
         });
-    }
-})
+
+        return vm;
+    }])
+
+    // 用户信息 (关于用户的徽章信息列表)
+    .controller('MemberDetailCtrl', ['app', function (app) {
+        var vm = this;
+
+        app.$http({
+            url: "/api/user/" + app.$stateParams.id
+        }).success(function (data) {
+            vm.recordList = data.recordList;
+            vm.toUser = data.toUser
+        });
+
+        return vm;
+
+    }])
+
+    .controller('BadgeMeCtrl', ['app', function (app) {
+        var vm = this;
+        
+        app.$http({
+            url: "/api/badge/all"
+        }).success(function (data) {
+            vm.badgeList = data;
+        });
+
+        vm.form = {
+            toUser: parseInt(app.$stateParams.id),
+            fromUser: 5,
+            badge: 7
+        };
+
+        vm.submit = function(form){
+            if(form.$valid){
+                app.$http({
+                    method: "POST",
+                    url: "/api/record/add",
+                    data: vm.form
+                }).success(function (data) {
+                    $state.go('badge.members.detail',{id:vm.toUser});
+                });
+            }
+        };
+
+        return vm;
+    }]);
 
