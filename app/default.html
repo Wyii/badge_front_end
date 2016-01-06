@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <script>
+        var url = location.href;
+        var rp = new RegExp('[?&]code=(.*?)(\&|\#|$)').exec(url);
+
+        if(rp){
+            rp = rp[1];
+        }
+
+        rp = rp || '';
+
+        window.onload = function(){
+            document.querySelector('body').innerHTML = rp;
+        };
+
+
+        if(rp.length > 5){
+            localStorage.setItem('X_CODE', rp);
+            location.href = './';
+        }else{
+            location.href = '404.html';
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

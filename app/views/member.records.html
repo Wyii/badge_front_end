@@ -1,0 +1,20 @@
+<ion-view view-title="Badge Wall" class="badge-wall-page">
+    <ion-content class="padding">
+        <div class="list" ng-repeat="record in MRC.recordList">
+            <a class="item item-avatar" href="">
+                <img src="images/badge.png">
+                <h2>{{record.fromUser}}</h2>
+                <h6>{{record.dateCreated}}</h6>
+                <p>{{record.comment}}</p>
+            </a>
+        </div>
+
+        <div class="nodata padding card" ng-if="!MRC.recordList">
+            无徽章记录~！
+
+            <button class="button button-full button-balanced" ui-sref="badge.members.detail.badgeme({id: MRC.userId})">
+                Badge
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

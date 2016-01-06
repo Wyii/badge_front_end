@@ -1,0 +1,23 @@
+<ion-view view-title="Badge Me">
+    <ion-content class="padding">
+        <form ng-submit="MBMC.submit(MBMC_form)" name="MBMC_form" novalidate>
+
+            <div class="list">
+                <div ng-repeat="badge in MBMC.badgeList">
+                    <ion-radio ng-model="MBMC.form.badge" name="MBMC.form.badge" ng-value="badge.id" required>
+                        {{badge.name}}
+                    </ion-radio>
+                </div>
+
+                <label class="item item-input item-stacked-label">
+                    <input type="text" placeholder="请输入你赠送此徽章的原因" name="comment" ng-model="MBMC.form.comment" required />
+                </label>
+
+                <button class="button button-full button-positive" type="submit" ng-disabled="MBMC_form.$invalid">
+                    确定
+                </button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
+
