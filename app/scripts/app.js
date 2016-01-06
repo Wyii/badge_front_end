@@ -20,28 +20,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
     })
 
-    .config(function ($provide) {
-        $provide.decorator('$state', function ($delegate, $stateParams) {
-            $delegate.forceReload = function () {
-                return $delegate.go($delegate.current, $stateParams, {
-                    reload: true,
-                    inherit: false,
-                    notify: true
-                });
-            };
-            return $delegate;
-        });
-    })
+    .config(['$ionicConfigProvider', function($ionicConfigProvider){
+        $ionicConfigProvider.tabs.position('bottom');
+    }])
 
     .config(['$httpProvider', function ($httpProvider) {
-        if (!$httpProvider.defaults.headers.get) {
-            $httpProvider.defaults.headers.get = {};
-        }
-        // Enables Request.IsAjaxRequest() in ASP.NET MVC
-        $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
-        // 针对IE，禁止缓存ajax 请求
-        $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
-        $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
 
         $httpProvider.interceptors.push(['$q', 'app', function ($q, app) {
 
@@ -121,23 +104,44 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
             .state('badge', {
                 url: '^/badge',
-                abstract: true
+                abstract: true,
+                views: {
+                    'main@': {
+                        templateUrl: 'views/tabs.html',
+                        controller: 'TabsCtrl as TC'
+                    }
+                }
             })
 
+            // 我的徽章
             .state('badge.my', {
                 url: '^/badge/my',
                 views: {
-                    'main@': {
-                        //templateUrl: 'views/badge-members.detail.html',
+                    'tabs': {
+                        templateUrl: 'views/my-badge.html',
                         controller: "CurrentCtrl as CC"
                     }
                 }
             })
 
+            // 徽章榜
+            .state('badge.roll', {
+                url: '^/badge/roll',
+                views: {
+                    //'main@': {
+                    'tabs': {
+                        templateUrl: 'views/badge-roll.html',
+                        controller: "BadgeRollCtrl as BRC"
+                    }
+                }
+            })
+
+            // 通讯录
             .state('badge.members', {
                 url: '^/badge/members',
                 views: {
-                    'main@': {
+                    //'main@': {
+                    'tabs': {
                         templateUrl: 'views/badge-members.html',
                         controller: "MemberCtrl as MC"
                     }
@@ -147,7 +151,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             .state('badge.members.detail', {
                 url: '^/badge/members/:id',
                 views: {
-                    'main@': {
+                    'tabs@badge': {
                         templateUrl: 'views/badge-members.detail.html',
                         controller: "MemberDetailCtrl as MDC"
                     }

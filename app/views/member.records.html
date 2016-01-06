@@ -12,7 +12,7 @@
         <div class="nodata padding card" ng-if="!MRC.recordList">
             无徽章记录~！
 
-            <button class="button button-full button-balanced" ui-sref="badge.members.detail.badgeme({id: MRC.userId})">
+            <button class="button button-full button-balanced" ng-if="current != MRC.userId" ui-sref="badge.members.detail.badgeme({id: MRC.userId})">
                 Badge
             </button>
         </div>

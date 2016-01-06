@@ -1,21 +1,37 @@
 angular.module('starter.controllers', [])
 
+    .controller('TabsCtrl', ['app', function(app){
+        var vm = this;
+        var $ionicTabsDelegate = app.$injector.get('$ionicTabsDelegate');
+
+        vm.select = function(index, state, params){
+            app.$state.go(state, params || {});
+            $ionicTabsDelegate.select(index);
+        };
+
+        return this;
+
+    }])
+
     // 获取当前用户信息
-    .controller('CurrentCtrl', ['app', function(app){
+    .controller('CurrentCtrl', ['app', function (app) {
         var vm = this;
 
         var userId = localStorage.getItem('X_USER_ID');
         var code = localStorage.getItem('X_CODE');
 
-        var my = function(userId){
-            if(userId){
+        var my = function (userId) {
+
+            if (userId) {
+                app.$rootScope.current = userId;
+
                 app.$state.transitionTo('badge.members.detail.records', {
                     id: userId
                 }, {
                     location: 'replace'
                 });
 
-            }else{
+            } else {
                 app.$state.transitionTo('badge.members', {}, {
                     location: 'replace'
                 });
@@ -24,7 +40,7 @@ angular.module('starter.controllers', [])
 
         vm.code = code;
 
-        if(code){
+        if (code) {
             app.$http({
                 url: '/wx',
                 method: 'POST',
@@ -37,19 +53,38 @@ angular.module('starter.controllers', [])
                 var userId = data.userId;
                 localStorage.setItem('X_USER_ID', userId);
                 my(userId);
-            }).error(function(){
+            }).error(function () {
                 localStorage.removeItem('X_CODE');
             });
-        }else{
+        } else {
             my(userId);
         }
 
         return vm;
     }])
 
-    // 首页
-    // 用户列表（按徽章数倒序显示)
+    // 用户列表
     .controller('MemberCtrl', ['app', function (app) {
+        var vm = this;
+
+        app.$http({
+            url: '/wx',
+            method: 'POST',
+            params: {
+                'department_id': 1,
+                'fetch_child': 1,
+                'status': 0,
+                'tid': 59
+            }
+        }).success(function (data) {
+            vm.memberList = data.userlist;
+        });
+
+        return vm;
+    }])
+
+    // 奖章排行榜（按徽章数倒序显示)
+    .controller('BadgeRollCtrl', ['app', function (app) {
         var vm = this;
 
         app.$http({

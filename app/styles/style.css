@@ -1,6 +1,10 @@
 /* Empty. Add your own CSS if you like */
 /* 圆形头像*/
 
+body {
+    background: #f5f5f5;
+}
+
 .innerBlock {
     display: inline-block;
 }
