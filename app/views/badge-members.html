@@ -1,4 +1,4 @@
-<ion-view view-title="Home">
+<ion-view view-title="Members" class="members-page">
     <ion-content>
         <div class="list list-inset">
             <label class="item item-input">
@@ -7,7 +7,7 @@
             </label>
         </div>
 
-        <div class="list">
+        <div class="list members-list">
             <div class="item row" ng-repeat="member in MC.memberList | filter:MC.memberList.search">
                 <div class="col col-20 item-avatar" ui-sref="badge.members.detail.records({id: member.userid})">
                     <img ng-src="{{member.avatar}}" />

@@ -1,20 +1,19 @@
 <ion-view view-title="Badge Wall" class="badge-wall-page">
     <ion-content class="padding">
-        <div class="list" ng-repeat="record in MRC.recordList">
-            <a class="item item-avatar" href="">
-                <img src="images/badge.png">
-                <h2>{{record.fromUser}}</h2>
-                <h6>{{record.dateCreated}}</h6>
-                <p>{{record.comment}}</p>
-            </a>
+        <div class="item item-avatar" ng-repeat="record in MRC.recordList">
+            <img src="images/badge.png">
+            <h2>{{record.fromUser}}</h2>
+            <div class="f12px">{{record.dateCreated | date: 'yyyy-MM-dd HH:mm'}}</div>
+            <p>{{record.comment}}</p>
         </div>
 
-        <div class="nodata padding card" ng-if="!MRC.recordList">
-            无徽章记录~！
+        <button class="button button-full button-balanced" ng-if="current != MRC.userId" ui-sref="badge.members.detail.badgeme({id: MRC.userId})">
+            Badge
+        </button>
 
-            <button class="button button-full button-balanced" ng-if="current != MRC.userId" ui-sref="badge.members.detail.badgeme({id: MRC.userId})">
-                Badge
-            </button>
-        </div>
+        <button class="button button-full button-balanced" ng-if="current == MRC.userId" ui-sref="badge.roll">
+            查看徽章榜 Badge Roll
+        </button>
+
     </ion-content>
 </ion-view>

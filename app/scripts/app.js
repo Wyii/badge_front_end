@@ -20,7 +20,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
     })
 
-    .config(['$ionicConfigProvider', function($ionicConfigProvider){
+    .config(['$ionicConfigProvider', function ($ionicConfigProvider) {
         $ionicConfigProvider.tabs.position('bottom');
     }])
 
@@ -30,22 +30,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
             return {
                 request: function (config) {
-                    var reg = /^\/wx$/;
-                    var httpReg = /^https/;
+                    //var reg = /^\/wx$/;
+                    //var httpReg = /^https/;
+                    //
+                    //config.params = config.params || {};
 
-                    config.params = config.params || {};
-
-                    // 判断是否使用 wx debug 接口进行调试应用
-                    if ('POST' === config.method && reg.test(config.url)) {
-                        config.wxapi = true;
-                        config.params.f = 'json';
-                        config.params.access_token = app.access_token;
-
-                        if (httpReg.test(location.href) && config.params.tid) {
-                            config.url = config.wx_api + app['wx_api_map'][config.params.tid];
-                            config.wxapi = false;
-                        }
-                    }
+                    //// 判断是否使用 wx debug 接口进行调试应用
+                    //if ('POST' === config.method && reg.test(config.url)) {
+                    //    config.wxapi = true;
+                    //    config.params.f = 'json';
+                    //    config.params.access_token = app.access_token;
+                    //
+                    //    if (httpReg.test(location.href) && config.params.tid) {
+                    //        config.url = config.wx_api + app['wx_api_map'][config.params.tid];
+                    //        config.wxapi = false;
+                    //    }
+                    //}
 
                     return config;
                 },
@@ -55,33 +55,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
                     if (200 === status || 204 === status) {
 
-                        if (config.wxapi) {
-                            res.data = JSON.parse(rst.content);
-                            var errcode = res.data.errcode;
-
-                            if (errcode > 0) {
-
-                                if (42001 === errcode || 41001 === errcode) {
-                                    app.$http({
-                                        url: '/wx',
-                                        method: 'POST',
-                                        params: {
-                                            'corpid': app.corpid,
-                                            'corpsecret': app.corpsecret,
-                                            'tid': 1
-                                        }
-                                    }).success(function (data) {
-                                        localStorage.setItem('X_TOKEN', data.access_token);
-                                        app.access_token = data.access_token;
-                                        app.$state.reload();
-                                    });
-                                }
-
-                                return $q.reject(res);
-                            }
-
-                            console.debug('wxapi:::ooOooo', res.data);
-                        }
+                        //if (config.wxapi) {
+                        //    res.data = JSON.parse(rst.content);
+                        //    var errcode = res.data.errcode;
+                        //
+                        //    if (errcode > 0) {
+                        //
+                        //        if (42001 === errcode || 41001 === errcode) {
+                        //            app.$http({
+                        //                url: '/wx',
+                        //                method: 'POST',
+                        //                params: {
+                        //                    'corpid': app.corpid,
+                        //                    'corpsecret': app.corpsecret,
+                        //                    'tid': 1
+                        //                }
+                        //            }).success(function (data) {
+                        //                localStorage.setItem('X_TOKEN', data.access_token);
+                        //                app.access_token = data.access_token;
+                        //                app.$state.reload();
+                        //            });
+                        //        }
+                        //
+                        //        return $q.reject(res);
+                        //    }
+                        //
+                        //    console.debug('wxapi:::ooOooo', res.data);
+                        //}
 
                         return res;
                     }
@@ -192,5 +192,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         app.$rootScope.$state = app.$state;
         app.$rootScope.$stateParams = app.$stateParams;
 
+        app.$rootScope.current = localStorage.getItem('X_USER_ID');
+
     }]);
+
+
 

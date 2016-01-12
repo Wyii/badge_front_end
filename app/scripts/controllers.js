@@ -68,16 +68,9 @@ angular.module('starter.controllers', [])
         var vm = this;
 
         app.$http({
-            url: '/wx',
-            method: 'POST',
-            params: {
-                'department_id': 1,
-                'fetch_child': 1,
-                'status': 0,
-                'tid': 59
-            }
+            url: '/api/users'
         }).success(function (data) {
-            vm.memberList = data.userlist;
+            vm.memberList = data;
         });
 
         return vm;
@@ -88,16 +81,9 @@ angular.module('starter.controllers', [])
         var vm = this;
 
         app.$http({
-            url: '/wx',
-            method: 'POST',
-            params: {
-                'department_id': 1,
-                'fetch_child': 1,
-                'status': 0,
-                'tid': 59
-            }
+            url: '/api/users/badged'
         }).success(function (data) {
-            vm.memberList = data.userlist;
+            vm.memberList = data;
         });
 
         return vm;
@@ -108,12 +94,7 @@ angular.module('starter.controllers', [])
         var vm = this;
 
         app.$http({
-            url: '/wx',
-            method: 'POST',
-            params: {
-                'userid': app.$stateParams.id,
-                'tid': 9
-            }
+            url: '/api/users/' + app.$stateParams.id
         }).success(function (data) {
             vm.member = data;
         });
@@ -129,9 +110,9 @@ angular.module('starter.controllers', [])
         vm.userId = app.$stateParams.id;
 
         app.$http({
-            url: '/api/user/' + vm.userId
+            url: '/api/users/' + vm.userId + '/badges'
         }).success(function (data) {
-            vm.recordList = data.recordList;
+            vm.recordList = data;
         });
 
         return vm;
@@ -142,14 +123,14 @@ angular.module('starter.controllers', [])
         var vm = this;
 
         app.$http({
-            url: '/api/badge/all'
+            url: '/api/badges'
         }).success(function (data) {
             vm.badgeList = data;
         });
 
         vm.form = {
             toUser: app.$stateParams.id,
-            fromUser: 5,
+            fromUser: app.$rootScope.current,
             badge: 7
         };
 
@@ -166,35 +147,35 @@ angular.module('starter.controllers', [])
         };
 
         return vm;
-    }])
-
-    .controller('BadgeMeCtrl', ['app', function (app) {
-        var vm = this;
-
-        app.$http({
-            url: '/api/badge/all'
-        }).success(function (data) {
-            vm.badgeList = data;
-        });
-
-        vm.form = {
-            toUser: parseInt(app.$stateParams.id),
-            fromUser: 5,
-            badge: 7
-        };
-
-        vm.submit = function (form) {
-            if (form.$valid) {
-                app.$http({
-                    method: 'POST',
-                    url: '/api/record/add',
-                    data: vm.form
-                }).success(function (data) {
-                    $state.go('badge.members.detail', {id: vm.toUser});
-                });
-            }
-        };
-
-        return vm;
     }]);
+
+    //.controller('BadgeMeCtrl', ['app', function (app) {
+    //    var vm = this;
+    //
+    //    app.$http({
+    //        url: '/api/badges'
+    //    }).success(function (data) {
+    //        vm.badgeList = data;
+    //    });
+    //
+    //    vm.form = {
+    //        toUser: parseInt(app.$stateParams.id),
+    //        fromUser: 5,
+    //        badge: 7
+    //    };
+    //
+    //    vm.submit = function (form) {
+    //        if (form.$valid) {
+    //            app.$http({
+    //                method: 'POST',
+    //                url: '/api/record/add',
+    //                data: vm.form
+    //            }).success(function (data) {
+    //                $state.go('badge.members.detail', {id: vm.toUser});
+    //            });
+    //        }
+    //    };
+    //
+    //    return vm;
+    //}]);
 

@@ -5,7 +5,6 @@ node_modules
 test/bower_components
 coverage/
 karma.conf.js
-.idea/
 page/
 design/
 .svn/
