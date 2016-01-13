@@ -1,5 +1,5 @@
-<ion-view view-title="Badge Me" class="badge-me-page">
-    <ion-content class="badge-me-content">
+<ion-view view-title="Badge Me" class="badge-me-page padding-right">
+    <ion-content class="badge-me-content" scroll="true">
         <form ng-submit="MBMC.submit(MBMC_form)" name="MBMC_form" novalidate>
 
             <div class="list">
@@ -13,7 +13,7 @@
                     <input type="text" placeholder="请输入你赠送此徽章的原因" name="comment" ng-model="MBMC.form.comment" required />
                 </label>
 
-                <button class="button button-full button-positive" type="submit" ng-disabled="MBMC_form.$invalid">
+                <button class="button button-block button-outline button-assertive" type="submit" ng-disabled="MBMC_form.$invalid">
                     确定
                 </button>
             </div>

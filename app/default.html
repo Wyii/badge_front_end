@@ -4,20 +4,28 @@
     <meta charset="UTF-8">
     <title>Welcome</title>
     <script>
+        var userId = localStorage.getItem('X_USER_ID');
         var url = location.href;
-        var rp = new RegExp('[?&]code=(.*?)(\&|\#|$)').exec(url);
 
-        if(rp){
-            rp = rp[1];
-        }
-
-        rp = rp || '';
-
-        if(rp.length > 5){
-            localStorage.setItem('X_CODE', rp);
+        if(userId){
             location.href = './';
+        }else if(!location.search){
+            location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx44d125e53237e988&redirect_uri=http://192.168.11.178/badge/default.html&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect';
         }else{
-            location.href = '404.html';
+            var rp = new RegExp('[?&]code=(.*?)(\&|\#|$)').exec(url);
+
+            if(rp){
+                rp = rp[1];
+            }
+
+            rp = rp || '';
+
+            if(rp.length > 5){
+                localStorage.setItem('X_CODE', rp);
+                location.href = './';
+            }else{
+                location.href = '404.html';
+            }
         }
     </script>
 </head>

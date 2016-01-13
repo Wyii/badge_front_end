@@ -38,26 +38,22 @@ angular.module('starter.controllers', [])
             }
         };
 
-        vm.code = code;
-
-        if (code) {
+        if(userId){
+            my(userId);
+        }else if(code){
             app.$http({
-                url: '/wx',
-                method: 'POST',
+                url: 'api/users/current',
                 params: {
-                    'code': code,
-                    'agentid': app.corpid,
-                    'tid': 38
+                    code: code
                 }
             }).success(function (data) {
                 var userId = data.userId;
                 localStorage.setItem('X_USER_ID', userId);
+                localStorage.removeItem('X_CODE');
                 my(userId);
             }).error(function () {
                 localStorage.removeItem('X_CODE');
             });
-        } else {
-            my(userId);
         }
 
         return vm;
@@ -134,14 +130,19 @@ angular.module('starter.controllers', [])
             badge: 7
         };
 
+
+
         vm.submit = function (form) {
             if (form.$valid) {
+                vm.form.badge = vm.form.badge + '';
                 app.$http({
                     method: 'POST',
-                    url: '/api/record/add',
+                    url: '/api/records/add',
                     data: vm.form
                 }).success(function (data) {
-                    $state.transitionTo('badge.members.detail', {id: vm.toUser}, {location: 'replace'});
+                    app.$state.transitionTo('badge.members.detail.records', {id: vm.form.toUser}, {
+                        reload: true, inherit: false, notify: true
+                    });
                 });
             }
         };
@@ -149,33 +150,4 @@ angular.module('starter.controllers', [])
         return vm;
     }]);
 
-    //.controller('BadgeMeCtrl', ['app', function (app) {
-    //    var vm = this;
-    //
-    //    app.$http({
-    //        url: '/api/badges'
-    //    }).success(function (data) {
-    //        vm.badgeList = data;
-    //    });
-    //
-    //    vm.form = {
-    //        toUser: parseInt(app.$stateParams.id),
-    //        fromUser: 5,
-    //        badge: 7
-    //    };
-    //
-    //    vm.submit = function (form) {
-    //        if (form.$valid) {
-    //            app.$http({
-    //                method: 'POST',
-    //                url: '/api/record/add',
-    //                data: vm.form
-    //            }).success(function (data) {
-    //                $state.go('badge.members.detail', {id: vm.toUser});
-    //            });
-    //        }
-    //    };
-    //
-    //    return vm;
-    //}]);
 

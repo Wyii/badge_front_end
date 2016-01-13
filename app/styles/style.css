@@ -6,6 +6,10 @@ body {
     font-size: 12px;
 }
 
+.f14px {
+    font-size: 14px;
+}
+
 .f16px {
     font-size: 16px;
 }
@@ -16,7 +20,7 @@ body {
 
 
 .members-page .members-list {
-    padding-bottom: 15px;
+    padding-bottom: 45px;
 }
 
 .user-detail-page .user-detail-item.item.item-avatar {
@@ -24,11 +28,12 @@ body {
 }
 
 .user-detail-page .scroll {
-    min-height:  calc(100% - 140px);
+    min-height:  calc(100% + 80px);
+    padding-right: 18px;
 }
 
 .badge-wall-page {
-    min-height: 400px;
+   height: 100%;
 }
 
 .badge-wall-page .avatar {
@@ -39,4 +44,12 @@ body {
     min-height: 90px;
     text-align: center;
 }
+
+
+/*.scroll-content > .scroll {*/
+    /*height: 100%;*/
+/*}*/
+/*.scroll-content > .scroll > iframe {*/
+    /*min-height: 100%;*/
+/*}*/
 
