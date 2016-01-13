@@ -28,12 +28,7 @@ body {
 }
 
 .user-detail-page .scroll {
-    min-height:  calc(100% + 80px);
     padding-right: 18px;
-}
-
-.badge-wall-page {
-   height: 100%;
 }
 
 .badge-wall-page .avatar {
@@ -46,10 +41,10 @@ body {
 }
 
 
-/*.scroll-content > .scroll {*/
-    /*height: 100%;*/
-/*}*/
-/*.scroll-content > .scroll > iframe {*/
-    /*min-height: 100%;*/
-/*}*/
+.overflow-scroll .scroll {
+    /*height: auto !important;*/
+}
 
+section.record {
+    padding-bottom: 148px;
+}

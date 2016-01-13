@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>Welcome</title>
     <script>
-        var userId = localStorage.getItem('X_USER_ID');
+
+        var userid = localStorage.getItem('X_USER_ID');
         var url = location.href;
 
-        if(userId){
+        if(userid){
             location.href = './';
         }else if(!location.search){
             location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx44d125e53237e988&redirect_uri=http://192.168.11.178/badge/default.html&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect';
@@ -20,6 +21,8 @@
 
             rp = rp || '';
 
+            alert(rp);
+
             if(rp.length > 5){
                 localStorage.setItem('X_CODE', rp);
                 location.href = './';
@@ -28,7 +31,11 @@
             }
         }
     </script>
+
+    <link href="lib/ionic/release/css/ionic.css" rel="stylesheet" />
 </head>
 <body>
+
+<script src="lib/ionic/release/js/ionic.bundle.min.js"></script>
 </body>
 </html>

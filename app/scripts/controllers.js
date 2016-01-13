@@ -5,8 +5,8 @@ angular.module('starter.controllers', [])
         var $ionicTabsDelegate = app.$injector.get('$ionicTabsDelegate');
 
         vm.select = function(index, state, params){
-            app.$state.go(state, params || {});
             $ionicTabsDelegate.select(index);
+            app.$state.go(state, params || {});
         };
 
         return this;
@@ -17,16 +17,15 @@ angular.module('starter.controllers', [])
     .controller('CurrentCtrl', ['app', function (app) {
         var vm = this;
 
-        var userId = localStorage.getItem('X_USER_ID');
+        var userid = localStorage.getItem('X_USER_ID');
         var code = localStorage.getItem('X_CODE');
 
-        var my = function (userId) {
-
-            if (userId) {
-                app.$rootScope.current = userId;
+        var my = function (userid) {
+            if (userid) {
+                app.$rootScope.current = userid;
 
                 app.$state.transitionTo('badge.members.detail.records', {
-                    id: userId
+                    id: userid
                 }, {
                     location: 'replace'
                 });
@@ -38,19 +37,19 @@ angular.module('starter.controllers', [])
             }
         };
 
-        if(userId){
-            my(userId);
+        if(userid){
+            my(userid);
         }else if(code){
             app.$http({
-                url: 'api/users/current',
+                url: '/api/users/currentuser',
                 params: {
                     code: code
                 }
             }).success(function (data) {
-                var userId = data.userId;
-                localStorage.setItem('X_USER_ID', userId);
+                var userid = data.userid;
+                localStorage.setItem('X_USER_ID', userid);
                 localStorage.removeItem('X_CODE');
-                my(userId);
+                my(userid);
             }).error(function () {
                 localStorage.removeItem('X_CODE');
             });
@@ -103,13 +102,25 @@ angular.module('starter.controllers', [])
     .controller('MemberRecordsCtrl', ['app', function (app) {
         var vm = this;
 
-        vm.userId = app.$stateParams.id;
+        vm.userid = app.$stateParams.id;
 
         app.$http({
-            url: '/api/users/' + vm.userId + '/badges'
+            url: '/api/users/' + vm.userid + '/badges'
         }).success(function (data) {
             vm.recordList = data;
         });
+
+        var $ionicScrollDelegate = app.$injector.get('$ionicScrollDelegate');
+
+
+        vm.resize = function () {
+
+            //$ionicScrollDelegate.scrollBottom();
+            console.debug(3333)
+        }
+
+
+
 
         return vm;
 

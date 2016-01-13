@@ -1,4 +1,4 @@
-<ion-view view-title="Home">
+<ion-view view-title="Badge Roll" class="members-page">
     <ion-content>
         <div class="list list-inset">
             <label class="item item-input">
@@ -7,7 +7,7 @@
             </label>
         </div>
 
-        <div class="list">
+        <div class="list members-list">
             <div ng-repeat="member in BRC.memberList | filter: BRC.memberList.search">
                 <a class="item item-avatar" ui-sref="badge.members.detail.records({id: member.userInfo.userid})">
                     <img ng-src="{{member.userInfo.avatar}}">
