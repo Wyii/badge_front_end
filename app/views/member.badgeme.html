@@ -3,11 +3,17 @@
         <section class="record">
             <form ng-submit="MBMC.submit(MBMC_form)" name="MBMC_form" novalidate>
                 <div class="list">
-                    <div ng-repeat="badge in MBMC.badgeList">
-                        <ion-radio ng-model="MBMC.form.badge" name="MBMC.form.badge" ng-value="badge.id" required>
-                            {{badge.name}}
-                        </ion-radio>
-                    </div>
+                    <ion-radio class="item item-avatar" ng-repeat="badge in MBMC.badgeList" ng-model="MBMC.form.badge" name="MBMC.form.badge" ng-value="badge.id" required>
+
+                            <img ng-src="images/badge_{{badge.id}}.png" />
+
+                            <div>
+                                {{badge.name}}
+                            </div>
+
+                            <p>{{badge.description}}</p>
+
+                    </ion-radio>
 
                     <label class="item item-input item-stacked-label">
                         <input type="text" placeholder="请输入你赠送此徽章的原因" name="comment" ng-model="MBMC.form.comment"

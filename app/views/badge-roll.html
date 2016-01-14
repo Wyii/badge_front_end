@@ -10,9 +10,16 @@
         <div class="list members-list">
             <div ng-repeat="member in BRC.memberList | filter: BRC.memberList.search">
                 <a class="item item-avatar" ui-sref="badge.members.detail.records({id: member.userInfo.userid})">
-                    <img ng-src="{{member.userInfo.avatar}}">
-                    <h2>{{member.userInfo.name}}</h2>
-                    <img src="images/badge.png"> x {{member.badgeCount}}
+                    <img ng-src="{{member.userInfo.avatar}}" >
+                    <p class="f12px">
+                        <span>{{member.userInfo.name}}</span>
+                        <!--<span>Bagde * {{member.badgeCount}}</span>-->
+                    </p>
+                    <div>
+                        <i class="icon" ng-repeat="key in BRC.toArray(member.badgeCount || 1, 8) track by $index" >
+                            <img ng-src="images/badge_{{key}}.png" width="24" height="24" />
+                        </i>
+                    </div>
                 </a>
             </div>
         </div>

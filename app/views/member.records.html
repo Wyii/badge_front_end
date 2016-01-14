@@ -2,7 +2,7 @@
     <ion-content class="padding " scroll="true">
         <section class="record">
             <div class="item item-avatar" ng-repeat="record in MRC.recordList">
-                <img src="images/badge.png">
+                <img ng-src="images/badge_{{record.badge.id}}.png">
                 <p>{{record.comment}}</p>
                 <div>
                     <span class="f12px">{{record.dateCreated | date: 'yyyy-MM-dd'}}</span>

@@ -81,6 +81,21 @@ angular.module('starter.controllers', [])
             vm.memberList = data;
         });
 
+        vm.toArray = function(length, max){
+            var rst = [], i = 1;
+            while(i<=length){
+                if(i>max){
+                    rst.push( i % max || max);
+                }else{
+                    rst.push(i);
+                }
+
+                i ++;
+            }
+            return rst;
+        }
+
+
         return vm;
     }])
 
@@ -118,8 +133,6 @@ angular.module('starter.controllers', [])
             //$ionicScrollDelegate.scrollBottom();
             console.debug(3333)
         }
-
-
 
 
         return vm;
