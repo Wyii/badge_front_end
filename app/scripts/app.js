@@ -1,23 +1,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
     .constant('app', {
-        version: 'v1.0.0',
-        corpid: 'wx44d125e53237e988',
-        corpsecret: 'pobyKsmqh09nWh-EdhAEhwLhNki_Cy_oxdoJtKqHseK0sUGNiPR13K-8PJUbNsW-',
-        'access_token': localStorage.getItem('X_TOKEN') || '',
-        'wx_api': 'https://qyapi.weixin.qq.com/cgi-bin',
-        'wx_api_map': {
-            // 获得用户token
-            '1': '/gettoken',
-            // 获取成员信息
-            '9': '/user/get',
-            // 获得成员列表（简单信息））
-            '10': '/user/simplelist',
-            // 通过code 获得当前用户信息
-            '38': '/user/getuserinfo',
-            // 获得成员列表（详细信息））
-            '59': '/user/list'
-        }
+        'access_token': localStorage.getItem('X_TOKEN') || ''
     })
 
     .config(['$ionicConfigProvider', function ($ionicConfigProvider) {
