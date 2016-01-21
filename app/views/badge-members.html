@@ -1,5 +1,5 @@
 <ion-view view-title="Members" class="members-page" cache-view="true">
-    <ion-content on-release="MC.drag()">
+    <ion-content>
 
         <div class="list list-inset">
             <label class="item item-input">
@@ -11,7 +11,7 @@
         <div class="list members-list">
             <div class="item row" ng-repeat="member in MC.memberList | filter:MC.memberList.search | limitTo: MC.limit">
                 <div class="col col-20 item-avatar" ui-sref="badge.members.detail.records({id: member.userid})">
-                    <img ng-src="{{member.avatar}}" />
+                    <!--<img ng-src="{{member.avatar}}" />-->
                 </div>
                 <div class="col" ui-sref="badge.members.detail.records({id: member.userid})">
                     <h2>{{member.name}}</h2>

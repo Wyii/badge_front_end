@@ -1,14 +1,7 @@
 <ion-view view-title="Badge Roll" class="members-page" cache-view="false">
     <ion-content>
-        <div class="list list-inset">
-            <label class="item item-input">
-                <i class="icon ion-search placeholder-icon"></i>
-                <input type="text" placeholder="Search" ng-model="BRC.memberList.search">
-            </label>
-        </div>
-
         <div class="list members-list">
-            <div ng-repeat="member in BRC.memberList | filter: BRC.memberList.search">
+            <div ng-repeat="member in BRC.memberList">
                 <a class="item item-avatar" ui-sref="badge.members.detail.records({id: member.userInfo.userid})">
                     <img ng-src="{{member.userInfo.avatar}}" >
                     <p class="f12px">

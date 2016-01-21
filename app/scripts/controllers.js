@@ -59,7 +59,7 @@ angular.module('starter.controllers', [])
     }])
 
     // 用户列表
-    .controller('MemberCtrl', ['app', '$scope', '$ionicScrollDelegate', function (app, $scope, $ionicScrollDelegate) {
+    .controller('MemberCtrl', ['app', '$scope',  function (app, $scope) {
 
         var vm = this;
 
@@ -74,38 +74,8 @@ angular.module('starter.controllers', [])
         app.$http({
             url: '/api/users'
         }).success(function (data) {
-
             vm.memberList = data;
             vm.limit = 20;
-
-
-            // 这不是一个好的解决方案
-
-            //vm.memberList = [];
-
-            //angular.forEach(data, function (o) {
-            //    vm.memberList.push(o);
-            //})
-
-
-            //var i = 0, interval = app.$injector.get('$interval');
-            //var stop = interval(function(){
-            //    vm.memberList[i] = data[i];
-            //
-            //    i ++;
-            //    if(i == data.length){
-            //        interval.cancel(stop);
-            //    }
-            //}, 20);
-            //
-            //vm.focusin = function(){
-            //    console.debug(i, data.length);
-            //    if(i < data.length){
-            //        vm.memberList = data;
-            //    }
-            //};
-
-            //app.storage('X_USERS', data);
         });
 
         return vm;
@@ -141,13 +111,6 @@ angular.module('starter.controllers', [])
     // 用户信息 (关于用户的徽章信息列表)
     .controller('MemberDetailCtrl', ['app', function (app) {
         var vm = this;
-
-        //vm.member = app.map(app.storage('X_USERS') || [], function(o, k){
-        //    return {
-        //        '__key__': o.userid,
-        //        '__val__': o
-        //    }
-        //}, {})[app.$stateParams.id] || {};
 
         app.$http({
             url: '/api/users/' + app.$stateParams.id
