@@ -18,8 +18,16 @@ body {
     margin-bottom: 20px;
 }
 
-.members-page .members-list {
-    padding-bottom: 45px;
+ion-content.badge-scroll {
+    bottom: 50px;
+}
+
+.members-page ion-content.badge-scroll {
+    top: 80px;
+}
+
+.badge-wall-page ion-content.badge-scroll {
+    bottom: 150px;
 }
 
 .user-detail-page .user-detail-item.item.item-avatar {
@@ -44,7 +52,7 @@ body {
 }
 
 section.record {
-    padding-bottom: 148px;
+    /*padding-bottom: 148px;*/
 }
 
 .badge-me-page {
