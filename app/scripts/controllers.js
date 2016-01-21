@@ -59,23 +59,15 @@ angular.module('starter.controllers', [])
     }])
 
     // 用户列表
-    .controller('MemberCtrl', ['app', '$scope',  function (app, $scope) {
-
+    .controller('MemberCtrl', ['app', '$scope',  function (app) {
         var vm = this;
 
         vm.memberList = [];
-
-        vm.drag = function(){
-            if(vm.limit < vm.memberList.length){
-                vm.limit = (vm.limit || 0) + 20;
-            }
-        }
 
         app.$http({
             url: '/api/users'
         }).success(function (data) {
             vm.memberList = data;
-            vm.limit = 20;
         });
 
         return vm;
