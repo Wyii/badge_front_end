@@ -48,10 +48,10 @@ angular.module('starter.controllers', [])
             }).success(function (data) {
                 var userid = data.userid;
                 localStorage.setItem('X_USER_ID', userid);
-                //localStorage.removeItem('X_CODE');
+                localStorage.removeItem('X_CODE');
                 my(userid);
             }).error(function () {
-                //localStorage.removeItem('X_CODE');
+                localStorage.removeItem('X_CODE');
             });
         }
 
@@ -102,8 +102,6 @@ angular.module('starter.controllers', [])
     // 用户信息 (关于用户的徽章信息列表)
     .controller('MemberDetailCtrl', ['app', function (app) {
         var vm = this;
-
-        vm.code = localStorage.getItem('X_CODE');
 
         app.$http({
             url: '/api/users/' + app.$stateParams.id
