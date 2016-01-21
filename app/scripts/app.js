@@ -178,10 +178,41 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
         app.$rootScope.current = localStorage.getItem('X_USER_ID');
 
-        app.storage = function(){
+        app.storage = function(key, val){
+            return val == null ? (function(){
+                var _val = localStorage.getItem(key);
+                if (typeof _val !== 'string') {
+                    return undefined;
+                }
 
-        }
+                try {
+                    return JSON.parse(_val);
+                } catch (e) {
+                    return _val || undefined;
+                }
+            })() : (function(){
+                var str = JSON.stringify(val);
+                str = str.replace(/^\"(.*)\"$/, '$1');
+                localStorage.setItem(key, str);
+            })();
+        };
 
+        app.map = function (obj, fn, oa) {
+            var o = oa, rst;
+
+            var isRstArray = angular.isArray(oa);
+
+            angular.forEach(obj, function (val, key) {
+                rst = fn.call(null, obj[key], key);
+                if (isRstArray) {
+                    o.push(rst);
+                } else {
+                    o[rst.__key__ || key] = rst.__val__ == null ? rst : rst.__val__;
+                }
+            })
+
+            return o;
+        };
     }]);
 
 
