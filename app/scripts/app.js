@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers'])
 
     .constant('app', {
         'access_token': localStorage.getItem('X_TOKEN') || ''
@@ -177,6 +177,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         app.$rootScope.$stateParams = app.$stateParams;
 
         app.$rootScope.current = localStorage.getItem('X_USER_ID');
+
+        app.storage = function(){
+
+        }
 
     }]);
 

@@ -48,10 +48,10 @@ angular.module('starter.controllers', [])
             }).success(function (data) {
                 var userid = data.userid;
                 localStorage.setItem('X_USER_ID', userid);
-                localStorage.removeItem('X_CODE');
+                //localStorage.removeItem('X_CODE');
                 my(userid);
             }).error(function () {
-                localStorage.removeItem('X_CODE');
+                //localStorage.removeItem('X_CODE');
             });
         }
 
@@ -66,6 +66,7 @@ angular.module('starter.controllers', [])
             url: '/api/users'
         }).success(function (data) {
             vm.memberList = data;
+
         });
 
         return vm;
@@ -95,13 +96,14 @@ angular.module('starter.controllers', [])
             return rst;
         }
 
-
         return vm;
     }])
 
     // 用户信息 (关于用户的徽章信息列表)
     .controller('MemberDetailCtrl', ['app', function (app) {
         var vm = this;
+
+        vm.code = localStorage.getItem('X_CODE');
 
         app.$http({
             url: '/api/users/' + app.$stateParams.id
@@ -127,14 +129,6 @@ angular.module('starter.controllers', [])
 
         var $ionicScrollDelegate = app.$injector.get('$ionicScrollDelegate');
 
-
-        vm.resize = function () {
-
-            //$ionicScrollDelegate.scrollBottom();
-            console.debug(3333)
-        }
-
-
         return vm;
 
     }])
@@ -153,8 +147,6 @@ angular.module('starter.controllers', [])
             fromUser: app.$rootScope.current,
             badge: 7
         };
-
-
 
         vm.submit = function (form) {
             if (form.$valid) {
