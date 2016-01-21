@@ -1,18 +1,16 @@
 <ion-view view-title="Rank" class="rank-page" cache-view="false">
-    <ion-content class="badge-scroll">
-        <div collection-repeat="member in BRC.memberList">
-            <a class="item item-avatar" ui-sref="badge.members.detail.records({id: member.userInfo.userid})">
-                <img ng-src="{{member.userInfo.avatar}}" >
-                <p class="f12px">
-                    <span>{{member.userInfo.name}}</span>
-                    <!--<span>Bagde * {{member.badgeCount}}</span>-->
-                </p>
-                <div>
-                    <i class="icon" ng-repeat="key in member.badges track by $index | limitTo: 20" >
-                        <img ng-src="images/badge_{{key}}.png" width="24"  />
-                    </i>
-                </div>
-            </a>
+    <ion-content class="badge-scroll padding">
+        <div class="item item-avatar" collection-repeat="member in BRC.memberList" ui-sref="badge.members.detail.records({id: member.userInfo.userid})">
+            <img ng-src="{{member.userInfo.avatar}}" >
+            <p class="f12px">
+                <span>{{member.userInfo.name}}</span>
+                <!--<span>Bagde * {{member.badgeCount}}</span>-->
+            </p>
+            <div>
+                <i class="icon" ng-repeat="key in member.badges track by $index | limitTo: 20" >
+                    <img ng-src="images/badge_{{key}}.png" width="24"  />
+                </i>
+            </div>
         </div>
     </ion-content>
 </ion-view>

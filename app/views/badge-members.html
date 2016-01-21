@@ -9,7 +9,7 @@
 
     <ion-content class="badge-scroll">
         <div class="list members-list">
-            <div class="item row" collection-repeat="member in MC.memberList | filter:MC.memberList.search | limitTo: 120">
+            <div class="item row" collection-repeat="member in MC.memberList | filter:MC.memberList.search">
                 <div class="col col-20 item-avatar" ui-sref="badge.members.detail.records({id: member.userid})">
                     <img ng-src="{{member.avatar}}" />
                 </div>
@@ -19,7 +19,7 @@
                     <div class="f12px">{{member.mobile}}</div>
                 </div>
                 <div class="col col-25 text-right">
-                    <button class="button button-block button-outline button-assertive" ui-sref="badge.members.detail.badgeme({id: member.userid})">Badge</button>
+                    <button class="button button-block button-outline button-assertive" ui-sref="badge.members.detail.badgeme({id: member.userid})">Badge !</button>
                 </div>
             </div>
         </div>
