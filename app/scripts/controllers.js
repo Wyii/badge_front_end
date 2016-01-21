@@ -82,8 +82,14 @@ angular.module('starter.controllers', [])
                 if(i == data.length){
                     interval.cancel(stop);
                 }
+            }, 20);
 
-            }, 100);
+            vm.focusin = function(){
+                console.debug(i, data.length);
+                if(i < data.length){
+                    vm.memberList = data;
+                }
+            };
 
             //app.storage('X_USERS', data);
         });
