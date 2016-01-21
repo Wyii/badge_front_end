@@ -2,19 +2,19 @@
     <ion-content class="badge-me-content" scroll="true">
         <section class="record">
             <form ng-submit="MBMC.submit(MBMC_form)" name="MBMC_form" novalidate>
-                <div class="list">
-                    <ion-radio class="item item-avatar" ng-repeat="badge in MBMC.badgeList" ng-model="MBMC.form.badge" name="MBMC.form.badge" ng-value="badge.id" required>
-
+                <div class="nine-grid">
+                    <ion-radio class="col col-33 item-image " ng-repeat="badge in MBMC.badgeList" ng-model="MBMC.form.badge" name="MBMC.form.badge" ng-value="badge.id" required>
                             <img ng-src="images/badge_{{badge.id}}.png" />
 
-                            <div>
+                            <div class="badge-name">
                                 {{badge.name}}
                             </div>
-
-                            <p>{{badge.description}}</p>
-
+                            <!--<p>{{badge.description}}</p>-->
                     </ion-radio>
 
+
+                </div>
+                <div class="list">
                     <label class="item item-input item-stacked-label">
                         <input type="text" placeholder="请输入你赠送此徽章的原因" name="comment" ng-model="MBMC.form.comment"
                                required/>

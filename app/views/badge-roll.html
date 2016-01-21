@@ -1,4 +1,4 @@
-<ion-view view-title="Badge Roll" class="members-page">
+<ion-view view-title="Badge Roll" class="members-page" cache-view="false">
     <ion-content>
         <div class="list list-inset">
             <label class="item item-input">
@@ -16,8 +16,8 @@
                         <!--<span>Bagde * {{member.badgeCount}}</span>-->
                     </p>
                     <div>
-                        <i class="icon" ng-repeat="key in BRC.toArray(member.badgeCount || 1, 8) track by $index" >
-                            <img ng-src="images/badge_{{key}}.png" width="24" height="24" />
+                        <i class="icon" ng-repeat="key in member.badges" >
+                            <img ng-src="images/badge_{{key}}.png" width="24"  />
                         </i>
                     </div>
                 </a>

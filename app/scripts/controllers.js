@@ -62,13 +62,13 @@ angular.module('starter.controllers', [])
     .controller('MemberCtrl', ['app', function (app) {
         var vm = this;
 
-        vm.memberList = app.storage('X_USERS');
+        //vm.memberList = app.storage('X_USERS');
 
         app.$http({
             url: '/api/users'
         }).success(function (data) {
             vm.memberList = data;
-            app.storage('X_USERS', data);
+            //app.storage('X_USERS', data);
         });
 
         return vm;
@@ -105,12 +105,12 @@ angular.module('starter.controllers', [])
     .controller('MemberDetailCtrl', ['app', function (app) {
         var vm = this;
 
-        vm.member = app.map(app.storage('X_USERS') || [], function(o, k){
-            return {
-                '__key__': o.userid,
-                '__val__': o
-            }
-        }, {})[app.$stateParams.id] || {};
+        //vm.member = app.map(app.storage('X_USERS') || [], function(o, k){
+        //    return {
+        //        '__key__': o.userid,
+        //        '__val__': o
+        //    }
+        //}, {})[app.$stateParams.id] || {};
 
         app.$http({
             url: '/api/users/' + app.$stateParams.id
@@ -136,8 +136,6 @@ angular.module('starter.controllers', [])
         }).success(function (data) {
             vm.recordList = data;
         });
-
-        var $ionicScrollDelegate = app.$injector.get('$ionicScrollDelegate');
 
         return vm;
 
