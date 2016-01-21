@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <title>Welcome</title>
     <script>
-
-        localStorage.removeItem('X_USER_ID');
-        // -
-
         var userid = localStorage.getItem('X_USER_ID');
         var url = location.href;
 
@@ -24,8 +20,6 @@
 
             rp = rp || '';
 
-            alert('code->  ' + rp );
-
             if(rp.length > 5){
                 localStorage.setItem('X_CODE', rp);
                 location.href = './';
@@ -36,17 +30,18 @@
     </script>
 
     <link href="lib/ionic/release/css/ionic.css" rel="stylesheet" />
-    <img src="images/badge_1.png" width="0" height="0" />
-    <img src="images/badge_2.png" width="0" height="0" />
-    <img src="images/badge_3.png" width="0" height="0" />
-    <img src="images/badge_4.png" width="0" height="0" />
-    <img src="images/badge_5.png" width="0" height="0" />
-    <img src="images/badge_6.png" width="0" height="0" />
-    <img src="images/badge_7.png" width="0" height="0" />
-    <img src="images/badge_8.png" width="0" height="0" />
+
 </head>
 <body>
 
+<img src="images/badge_1.png" width="0" height="0" />
+<img src="images/badge_2.png" width="0" height="0" />
+<img src="images/badge_3.png" width="0" height="0" />
+<img src="images/badge_4.png" width="0" height="0" />
+<img src="images/badge_5.png" width="0" height="0" />
+<img src="images/badge_6.png" width="0" height="0" />
+<img src="images/badge_7.png" width="0" height="0" />
+<img src="images/badge_8.png" width="0" height="0" />
 <script src="lib/ionic/release/js/ionic.bundle.min.js"></script>
 </body>
 </html>
