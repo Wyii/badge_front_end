@@ -67,7 +67,24 @@ angular.module('starter.controllers', [])
         app.$http({
             url: '/api/users'
         }).success(function (data) {
-            vm.memberList = data;
+
+            vm.memberList = [];
+
+            //angular.forEach(data, function (o) {
+            //    vm.memberList.push(o);
+            //})
+
+            var i = 0, interval = app.$injector.get('$interval');
+            var stop = interval(function(){
+                vm.memberList[i] = data[i];
+
+                i ++;
+                if(i == data.length){
+                    interval.cancel(stop);
+                }
+
+            }, 100);
+
             //app.storage('X_USERS', data);
         });
 
@@ -118,6 +135,7 @@ angular.module('starter.controllers', [])
             if(!data){
                 return;
             }
+
             vm.member = data;
         });
 
