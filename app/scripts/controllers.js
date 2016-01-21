@@ -1,10 +1,10 @@
 angular.module('starter.controllers', [])
 
-    .controller('TabsCtrl', ['app', function(app){
+    .controller('TabsCtrl', ['app', function (app) {
         var vm = this;
         var $ionicTabsDelegate = app.$injector.get('$ionicTabsDelegate');
 
-        vm.select = function(index, state, params){
+        vm.select = function (index, state, params) {
             $ionicTabsDelegate.select(index);
             app.$state.go(state, params || {});
         };
@@ -37,9 +37,9 @@ angular.module('starter.controllers', [])
             }
         };
 
-        if(userid){
+        if (userid) {
             my(userid);
-        }else if(code){
+        } else if (code) {
             app.$http({
                 url: '/api/users/currentuser',
                 params: {
@@ -59,37 +59,56 @@ angular.module('starter.controllers', [])
     }])
 
     // 用户列表
-    .controller('MemberCtrl', ['app', function (app) {
+    .controller('MemberCtrl', ['app', '$scope', '$ionicScrollDelegate', function (app, $scope, $ionicScrollDelegate) {
+
         var vm = this;
 
-        //vm.memberList = app.storage('X_USERS');
+        vm.memberList = [];
+
+        vm.drag = function(){
+            if(vm.limit < vm.memberList.length){
+                vm.limit = (vm.limit || 0) + 20;
+            }
+        }
+
+        vm.doRefresh = function () {
+            vm.limit = (vm.limit || 0) + 20;
+            $scope.$broadcast('scroll.refreshComplete');
+        }
 
         app.$http({
             url: '/api/users'
         }).success(function (data) {
 
-            vm.memberList = [];
+            vm.memberList = data;
+            vm.limit = 20;
+
+
+            // 这不是一个好的解决方案
+
+            //vm.memberList = [];
 
             //angular.forEach(data, function (o) {
             //    vm.memberList.push(o);
             //})
 
-            var i = 0, interval = app.$injector.get('$interval');
-            var stop = interval(function(){
-                vm.memberList[i] = data[i];
 
-                i ++;
-                if(i == data.length){
-                    interval.cancel(stop);
-                }
-            }, 20);
-
-            vm.focusin = function(){
-                console.debug(i, data.length);
-                if(i < data.length){
-                    vm.memberList = data;
-                }
-            };
+            //var i = 0, interval = app.$injector.get('$interval');
+            //var stop = interval(function(){
+            //    vm.memberList[i] = data[i];
+            //
+            //    i ++;
+            //    if(i == data.length){
+            //        interval.cancel(stop);
+            //    }
+            //}, 20);
+            //
+            //vm.focusin = function(){
+            //    console.debug(i, data.length);
+            //    if(i < data.length){
+            //        vm.memberList = data;
+            //    }
+            //};
 
             //app.storage('X_USERS', data);
         });
@@ -107,16 +126,16 @@ angular.module('starter.controllers', [])
             vm.memberList = data;
         });
 
-        vm.toArray = function(length, max){
+        vm.toArray = function (length, max) {
             var rst = [], i = 1;
-            while(i<=length){
-                if(i>max){
-                    rst.push( i % max || max);
-                }else{
+            while (i <= length) {
+                if (i > max) {
+                    rst.push(i % max || max);
+                } else {
                     rst.push(i);
                 }
 
-                i ++;
+                i++;
             }
             return rst;
         }
@@ -138,7 +157,7 @@ angular.module('starter.controllers', [])
         app.$http({
             url: '/api/users/' + app.$stateParams.id
         }).success(function (data) {
-            if(!data){
+            if (!data) {
                 return;
             }
 
