@@ -71,11 +71,6 @@ angular.module('starter.controllers', [])
             }
         }
 
-        vm.doRefresh = function () {
-            vm.limit = (vm.limit || 0) + 20;
-            $scope.$broadcast('scroll.refreshComplete');
-        }
-
         app.$http({
             url: '/api/users'
         }).success(function (data) {

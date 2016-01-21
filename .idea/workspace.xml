@@ -25,7 +25,7 @@
         <entry file="file://$PROJECT_DIR$/app/views/badge-members.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.6666667">
-              <caret line="1" column="59" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="59" />
+              <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -34,8 +34,8 @@
       <file leaf-file-name="controllers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.10013351">
-              <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
+            <state vertical-scroll-proportion="1.2169576">
+              <caret line="61" column="69" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -45,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
+              <caret line="196" column="17" selection-start-line="196" selection-start-column="17" selection-end-line="196" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -734,7 +734,7 @@
     <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
+          <caret line="196" column="17" selection-start-line="196" selection-start-column="17" selection-end-line="196" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -742,15 +742,15 @@
     <entry file="file://$PROJECT_DIR$/app/views/badge-members.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.6666667">
-          <caret line="1" column="59" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="59" />
+          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10013351">
-          <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
+        <state vertical-scroll-proportion="1.2169576">
+          <caret line="61" column="69" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="69" />
           <folding />
         </state>
       </provider>
