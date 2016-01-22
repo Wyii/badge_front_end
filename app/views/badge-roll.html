@@ -1,16 +1,22 @@
 <ion-view view-title="Rank" class="rank-page" cache-view="false">
     <ion-content class="badge-scroll padding">
-        <div class="item item-avatar" collection-repeat="member in BRC.memberList" ui-sref="badge.members.detail.records({id: member.userInfo.userid})">
-            <img ng-src="{{member.userInfo.avatar}}" >
-            <p class="f12px">
-                <span>{{member.userInfo.name}}</span>
-                <!--<span>Bagde * {{member.badgeCount}}</span>-->
-            </p>
-            <div>
-                <i class="icon" ng-repeat="key in member.badges track by $index | limitTo: 20" >
-                    <img ng-src="images/badge_{{key}}.png" width="32"  />
-                </i>
+        <ion-list>
+            <div class="item row row-center" collection-repeat="member in BRC.memberList | orderBy: 'badgeCount': true" ui-sref="badge.members.detail.records({id: member.userInfo.userid})">
+                <div class="col avatar">
+                    <img ng-src="{{member.userInfo.avatar}}"  />
+                    <div>{{member.userInfo.name}}</div>
+                </div>
+
+                <div class="col col-80 badge-images">
+                    <i class="icon" ng-repeat="key in member.badges | limitTo: 10 track by $index " >
+                        <img ng-src="images/badge_{{key}}.png"  />
+                    </i>
+
+                    <button class="button button-clear button-assertive buttom-sm" ng-if="member.badges.length > 10">
+                        total: {{member.badgeCount}}
+                    </button>
+                </div>
             </div>
-        </div>
+        </ion-list>
     </ion-content>
 </ion-view>
