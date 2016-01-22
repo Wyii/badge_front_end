@@ -82,7 +82,7 @@ div.nine-grid .col-33:nth-child(3) {
 }
 
 div.nine-grid .col-33 img {
-    width: 39px;
+    width: 48px;
     margin: 0 auto;
     display: block;
 }
@@ -93,5 +93,5 @@ div.nine-grid .col-33 div.badge-name {
 }
 
 .item-avatar img.badge-image {
-    width: 35px;
+    /*width: 35px;*/
 }
