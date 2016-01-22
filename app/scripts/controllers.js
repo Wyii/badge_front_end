@@ -156,7 +156,7 @@ angular.module('starter.controllers', [])
         vm.form = {
             toUser: app.$stateParams.id,
             fromUser: app.$rootScope.current,
-            badge: 7
+            badge: 1
         };
 
         vm.submit = function (form) {
