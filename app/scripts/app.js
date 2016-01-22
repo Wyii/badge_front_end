@@ -1,7 +1,12 @@
 angular.module('starter', ['ionic', 'starter.controllers'])
 
     .constant('app', {
-        'access_token': localStorage.getItem('X_TOKEN') || ''
+        'access_token': localStorage.getItem('X_TOKEN') || '',
+        'tab' : {
+            'me': 0,
+            'rank': 1,
+            'team': 2
+        }
     })
 
     .config(['$ionicConfigProvider', function ($ionicConfigProvider) {

@@ -1,5 +1,5 @@
 <ion-view view-title="Badge Me" class="badge-me-page padding-right">
-    <ion-content class="badge-content" scroll="true">
+    <ion-content class="badge-scroll-leaf" scroll="true">
         <section class="record">
             <form ng-submit="MBMC.submit(MBMC_form)" name="MBMC_form" novalidate>
                 <div class="nine-grid">
@@ -11,9 +11,8 @@
                             </div>
                             <!--<p>{{badge.description}}</p>-->
                     </ion-radio>
-
-
                 </div>
+
                 <div class="list">
                     <label class="item item-input item-stacked-label">
                         <input type="text" placeholder="请输入你赠送此徽章的原因" name="comment" ng-model="MBMC.form.comment"

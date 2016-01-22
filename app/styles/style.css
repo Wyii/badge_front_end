@@ -22,12 +22,12 @@ ion-content.badge-scroll {
     bottom: 50px;
 }
 
-.members-page ion-content.badge-scroll {
-    top: 80px;
+ion-content.badge-scroll-leaf {
+    bottom: 150px;
 }
 
-.badge-wall-page ion-content.badge-scroll {
-    bottom: 150px;
+.members-page ion-content.badge-scroll {
+    top: 80px;
 }
 
 .user-detail-page .user-detail-item.item.item-avatar {
@@ -47,16 +47,8 @@ ion-content.badge-scroll {
     text-align: center;
 }
 
-.overflow-scroll .scroll {
-    /*height: auto !important;*/
-}
-
-section.record {
-    /*padding-bottom: 148px;*/
-}
-
-.badge-me-page {
-
+.badge-me-page .item-radio input:checked + .radio-content .item-content {
+    background: rgba(255, 0, 0, .1);
 }
 
 .badge-me-page .item.item-input {
@@ -74,6 +66,11 @@ div.nine-grid {
 
 div.nine-grid .col-33 {
     display: inline-block;
+    padding: 0;
+}
+
+div.nine-grid .col-33 .ion-checkmark{
+    color: #ff3b30;
 }
 
 div.nine-grid .col-33:nth-child(3n + 1) {

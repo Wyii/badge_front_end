@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
         var $ionicTabsDelegate = app.$injector.get('$ionicTabsDelegate');
 
         vm.select = function (index, state, params) {
-            $ionicTabsDelegate.select(index);
+            $ionicTabsDelegate.select(app.tab[index]);
             app.$state.go(state, params || {});
         };
 
@@ -77,6 +77,9 @@ angular.module('starter.controllers', [])
     .controller('BadgeRollCtrl', ['app', function (app) {
         var vm = this;
 
+        var $ionicTabsDelegate = app.$injector.get('$ionicTabsDelegate');
+        $ionicTabsDelegate.select(app.tab['rank']);
+
         app.$http({
             url: '/api/users/badged'
         }).success(function (data) {
@@ -104,6 +107,8 @@ angular.module('starter.controllers', [])
     .controller('MemberDetailCtrl', ['app', function (app) {
         var vm = this;
 
+
+
         app.$http({
             url: '/api/users/' + app.$stateParams.id
         }).success(function (data) {
@@ -123,6 +128,11 @@ angular.module('starter.controllers', [])
         var vm = this;
 
         vm.userid = app.$stateParams.id;
+
+        vm.title = app.$stateParams.id === app.$rootScope.current ? 'Me' : 'Wall'
+
+        var $ionicTabsDelegate = app.$injector.get('$ionicTabsDelegate');
+        $ionicTabsDelegate.select(app.tab['me']);
 
         app.$http({
             url: '/api/users/' + vm.userid + '/badges'
