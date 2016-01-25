@@ -9,7 +9,7 @@
                 <img class="badge-image" ng-src="images/badge_{{record.badge.id}}.png">
                 <div>
                     <span class="f12px">{{record.dateCreated | date: 'yyyy-MM-dd'}}</span>
-                    <span class="f12px" ui-sref="badge.members.detail.records({id: record.toUser.userid || record.toUser})"> to {{record.toUser.name || record.toUser}}</span>
+                    <span class="f12px" ui-sref="badge.members.detail.records({id: record.toUser.userid || record.toUser})"> TO {{record.toUser.name || record.toUser}}</span>
                 </div>
 
                 <p>{{record.comment}}</p>
