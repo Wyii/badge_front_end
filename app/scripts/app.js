@@ -151,7 +151,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 url: '^/badge/members/:id/records',
                 views: {
                     'action@badge.members.detail': {
-                        templateUrl: 'views/member.records.html',
+                        templateUrl: 'views/member.badges.html',
                         controller: "MemberRecordsCtrl as MRC"
                     }
                 }

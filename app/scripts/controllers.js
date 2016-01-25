@@ -24,7 +24,7 @@ angular.module('starter.controllers', [])
             if (userid) {
                 app.$rootScope.current = userid;
 
-                app.$state.transitionTo('badge.members.detail.records', {
+                app.$state.transitionTo('badge.members.detail.badgeds', {
                     id: userid
                 }, {
                     location: 'replace'
@@ -147,14 +147,14 @@ angular.module('starter.controllers', [])
         $ionicTabsDelegate.select(app.tab['me']);
 
         var typeOpt = {
+            // 发出
             "badge.members.detail.records": 'badges',
+            // 收到
             "badge.members.detail.badgeds": 'badged'
         }
 
-        console.debug( app.$state.current, typeOpt[app.$state.current.name] );
-
         app.$http({
-            url: '/api/users/' + vm.userid + '/' + (typeOpt[app.$state.current.name] || 'badges')
+            url: '/api/users/' + vm.userid + '/' + (typeOpt[app.$state.current.name] || 'badged')
         }).success(function (data) {
             vm.recordList = data;
         });
@@ -186,7 +186,7 @@ angular.module('starter.controllers', [])
                     url: '/api/records/add',
                     data: vm.form
                 }).success(function (data) {
-                    app.$state.transitionTo('badge.members.detail.records', {id: vm.form.toUser}, {
+                    app.$state.transitionTo('badge.members.detail.badgeds', {id: vm.form.toUser}, {
                         reload: true, inherit: false, notify: true
                     });
                 });
