@@ -8,9 +8,9 @@
                         {{MDC.member.name}}
                     </div>
 
-                    <div class="button-bar padding-top bar-calm">
-                        <a class="button button-small" ui-sref="badge.members.detail.records({'id': MDC.member.userid })" ui-sref-active="active">收到的徽章: {{MDC.member.badgeCount}}</a>
-                        <a class="button button-small" ui-sref="badge.members.detail.badgeds({'id': MDC.member.userid })" ui-sref-active="active">发出的徽章: {{MDC.member.badgedCount}}</a>
+                    <div class="button-bar padding-top " style="width: 60%">
+                        <a class="button button-small" ui-sref="badge.members.detail.records({'id': MDC.member.userid })" ui-sref-active="active">收到 x {{MDC.member.badgeCount}}</a>
+                        <a class="button button-small" ui-sref="badge.members.detail.badgeds({'id': MDC.member.userid })" ui-sref-active="active">发出 x {{MDC.member.badgedCount}}</a>
                     </div>
                 </div>
             </div>
