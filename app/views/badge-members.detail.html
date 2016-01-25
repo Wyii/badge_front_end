@@ -7,18 +7,15 @@
                     <div class="f16px">
                         {{MDC.member.name}}
                     </div>
-                    <div class="f12px">{{MDC.member.email}}</div>
-                    <div class="f12px">{{MDC.member.mobile}}</div>
 
-                    <!--<div>-->
-                        <!--收到的徽章: {{MDC.member.badgeCount}}-->
-                    <!--</div>-->
-                    <!--<div>-->
-                        <!--收到的徽章: {{MDC.member.badgedCount}}-->
-                    <!--</div>-->
+                    <div class="button-bar padding-top bar-calm">
+                        <a class="button button-small" ui-sref="badge.members.detail.records({'id': MDC.member.userid })" ui-sref-active="active">收到的徽章: {{MDC.member.badgeCount}}</a>
+                        <a class="button button-small" ui-sref="badge.members.detail.badgeds({'id': MDC.member.userid })" ui-sref-active="active">发出的徽章: {{MDC.member.badgedCount}}</a>
+                    </div>
                 </div>
             </div>
             <ion-nav-view name="action"></ion-nav-view>
         </section>
     </ion-content>
 </ion-view>
+

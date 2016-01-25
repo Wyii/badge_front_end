@@ -157,6 +157,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             })
 
+            .state('badge.members.detail.badgeds', {
+                url: '^/badge/members/:id/badgeds',
+                views: {
+                    'action@badge.members.detail': {
+                        templateUrl: 'views/member.badgeds.html',
+                        controller: "MemberRecordsCtrl as MRC"
+                    }
+                }
+            })
+
             .state('badge.members.detail.badgeme', {
                 url: '^/badge/members/:id/badgeme',
                 views: {

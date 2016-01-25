@@ -120,3 +120,7 @@ div.nine-grid .col-33 div.badge-name {
     height: 40px;
     border-radius: 50%;
 }
+
+.user-detail-page .button-bar.bar-calm .button {
+    border-left-color: rgba(10, 157, 199, .5);
+}

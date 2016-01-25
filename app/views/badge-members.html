@@ -3,21 +3,23 @@
     <div class="list list-inset">
         <label class="item item-input">
             <i class="icon ion-search placeholder-icon"></i>
-            <input type="text" placeholder="Search" ng-model="MC.memberList.search" />
+            <input type="text" placeholder="Search" ng-model="MC.showMembers_search" ng-keyup="MC.keyup()" />
         </label>
     </div>
 
     <ion-content class="badge-scroll">
         <div class="list members-list">
-            <div class="item row" collection-repeat="member in MC.memberList | filter:MC.memberList.search">
-                <div class="col col-20 item-avatar" ui-sref="badge.members.detail.records({id: member.userid})">
+            <div class="item row" collection-repeat="member in MC.showMembers | filter: MC.showMembers_search">
+                <div class="col col-20 item-avatar col-center" ui-sref="badge.members.detail.records({id: member.userid})">
                     <img ng-src="{{member.avatar}}" />
                 </div>
-                <div class="col" ui-sref="badge.members.detail.records({id: member.userid})">
+
+                <div class="col col-center" ui-sref="badge.members.detail.records({id: member.userid})">
                     <h2>{{member.name}}</h2>
                     <div class="f12px">{{member.email}}</div>
                     <div class="f12px">{{member.mobile}}</div>
                 </div>
+
                 <div class="col col-25 text-right">
                     <button class="button button-block button-outline button-assertive" ui-sref="badge.members.detail.badgeme({id: member.userid})">Badge !</button>
                 </div>

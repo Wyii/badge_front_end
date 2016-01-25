@@ -45,8 +45,7 @@ angular.module('starter.controllers', [])
                 params: {
                     code: code
                 }
-            }).success(function (data) {
-                var userid = data.userid;
+            }).success(function (userid) {
                 localStorage.setItem('X_USER_ID', userid);
                 localStorage.removeItem('X_CODE');
                 my(userid);
@@ -61,14 +60,27 @@ angular.module('starter.controllers', [])
     // 用户列表
     .controller('MemberCtrl', ['app', '$scope',  function (app) {
         var vm = this;
+        var departments = [], all = []
 
         vm.memberList = [];
 
         app.$http({
+            url: '/api/users/'+ app.$rootScope.current +'/department'
+        }).success(function (data) {
+            vm.showMembers = data;
+            departments = vm.showMembers;
+        });
+
+        app.$http({
             url: '/api/users'
         }).success(function (data) {
-            vm.memberList = data;
+            vm.members = data;
         });
+
+        vm.keyup = function(){
+            console.debug(departments, vm.showMembers_search);
+            vm.showMembers = vm.showMembers_search ? vm.members : departments;
+        };
 
         return vm;
     }])
@@ -134,8 +146,15 @@ angular.module('starter.controllers', [])
         var $ionicTabsDelegate = app.$injector.get('$ionicTabsDelegate');
         $ionicTabsDelegate.select(app.tab['me']);
 
+        var typeOpt = {
+            "badge.members.detail.records": 'badges',
+            "badge.members.detail.badgeds": 'badged'
+        }
+
+        console.debug( app.$state.current, typeOpt[app.$state.current.name] );
+
         app.$http({
-            url: '/api/users/' + vm.userid + '/badges'
+            url: '/api/users/' + vm.userid + '/' + (typeOpt[app.$state.current.name] || 'badges')
         }).success(function (data) {
             vm.recordList = data;
         });
