@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="col col-25 text-right">
-                    <button class="button button-block button-outline button-assertive" ui-sref="badge.members.detail.badgeme({id: member.userid})">Badge !</button>
+                    <button class="button button-block button-outline button-assertive" ui-sref="badge.members.detail.badgeme({id: member.userid})" ng-if="current !== member.userid">Badge !</button>
                 </div>
             </div>
         </div>
